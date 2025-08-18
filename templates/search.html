@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    <title>Maqola qidiruvi</title>
+{% endblock %}
+
+{% block content %}
+ <!-- Breadcrumb -->
+        <section class="breadcrumb-area">
+            <div class="container">
+                <div class="breadcrumb-content" data-aos="fade-up">
+                    <a href="{% url 'index' %}"><span>HOME</span></a> <span>-</span> <a href="{% url 'blog_list' %}"><span>BLOG</span></a><span>- QIDIRUV</span>
+                    <h1 class="section-heading"><img src="{% static '/images/star-2.png' %}" alt="Star"> Qidiruv natijasi <img src="{% static '/images/star-2.png' %}" alt="Star"></h1>
+                </div>
+            </div>
+        </section>
+
+        <div class="col-md-4 mx-auto">
+            <div class="blog-sidebar">
+                <div class="blog-sidebar-inner">
+
+                    <div class="blog-sidebar-widget search-widget">
+                        <div class="blog-sidebar-widget-inner" data-aos="zoom-in">
+                            <form action="{% url 'blog_search' %}" method="GET" class="shadow-box">
+                                <input type="text" name="q" placeholder="Bu yerda qidiring..." required>
+                                <button type="submit" class="theme-btn">Search</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Blog Items -->
+
+            <section class="blog-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="blog-items">
+                            {% if blogs %}
+                            {% for blog in blogs %}
+                                <div class="blog-item" data-aos="zoom-in">              
+                                    <div class="img-box">
+                                        <img src="{{ blog.image.url }}" alt="Blog">
+                                    </div>
+                                
+                                    <div class="content">
+                                        <span class="meta">{{ blog.created_at | date:"d F Y" }}</span>
+                                        <h1><a href="{% url 'blog_detail' slug=blog.slug %}">{{ blog.title }}</a></h1>
+                                        <p>{{ blog.content |safe }}</p>
+                                        <a href="{% url 'blog_detail' slug=blog.slug %}" class="theme-btn">Read More</a>
+                                        
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                {% else %}
+                                    <div class="no-results mx-auto" data-aos="zoom-in">
+                                        <p>Afsuski,Siz qidirgan mavzuda hali maqola yozganim yo'q !</p>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+{% endblock %}

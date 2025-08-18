@@ -1,0 +1,21 @@
+     {% load static %}
+     
+     <!-- Footer -->
+        <footer class="footer-area">
+            <div class="container">
+                <div class="footer-content text-center">
+                    <a href="{% url 'index' %}" class="logo">
+                        <img src="{% static '/images/image.png' %}" style="height: 35px; width: 75 px;" alt="Logo">
+                    </a>
+                    <ul class="footer-menu">
+                        <li><a href="{% url 'index' %}">Home</a></li>
+                        <li><a href="{% url 'about' %}">About</a></li>
+                        <li><a href="{% url 'works' %}">Works</a></li>
+                        <li><a href="{% url 'contact' %}">Contact</a></li>
+                    </ul>
+                    <p class="copyright">
+                        &copy; All rights reserved by <span>Muhammadamin Ozadov</span>
+                    </p>
+                </div>
+            </div>
+        </footer>

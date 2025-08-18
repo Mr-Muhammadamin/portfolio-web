@@ -1,0 +1,31 @@
+{% load static %}
+ <!-- Header -->
+        <header class="header-area">
+            <div class="container">
+                <div class="gx-row d-flex align-items-center justify-content-between">
+                    <a href="{% url 'index' %}" class="logo">
+                        <img src="{% static '/images/image.png' %}" style="height: 45px; width: 85 px;" alt="Logo">
+                    </a>
+
+                    <nav class="navbar">
+                        <ul class="menu">
+                            <li ><a href="{% url 'index' %}">Home</a></li>
+                            <li><a href="{% url 'about' %}">About</a></li>
+                            <li><a href="{% url 'works' %}">Works</a></li>
+                            <li><a href="{% url 'contact' %}">Contact</a></li>
+                        </ul>
+                        <a href="{% url 'contact' %}" class="theme-btn">Keling, gaplashaylik</a>
+                    </nav>
+
+                    <a href="{% url 'contact' %}" class="theme-btn">Suhbatlashish</a>
+
+                    <div class="show-menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        

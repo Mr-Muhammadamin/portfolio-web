@@ -1,0 +1,7 @@
+django==5.1.5
+python-dotenv==1.0.1
+psycopg2==2.9.10
+django-tinymce==4.1.0
+pillow==11.1.0
+requests==2.32.3
+bleach==6.2.0

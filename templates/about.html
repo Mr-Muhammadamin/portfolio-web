@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    <title>Men haqimda</title>
+{% endblock %}
+
+{% block content %}
+ <!-- About -->
+    <section class="about-area">
+        <div class="container">
+            <div class="d-flex about-me-wrap align-items-start gap-24">
+                <div data-aos="zoom-in">
+                    <div class="about-image-box shadow-box">
+                        <img src="{% static '/images/bg1.png' %}" alt="BG" class="bg-img">
+                        <div class="image-inner">
+                        {% if about_me.image %}
+                            <img src="{{ about_me.image.url }}" alt="About Me">
+                        {% else %}
+                            <img src="{% static '/images/muhammadamin.png' %}" alt="About Me">
+                        {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-details" data-aos="zoom-in">
+                    <h1 class="section-heading" data-aos="fade-up"><img src="{% static '/images/star-2.png' %}" alt="Star"> Tanishamiz <img src="{% static '/images/star-2.png' %}" alt="Star"></h1>
+                    <div class="about-details-inner shadow-box">
+                        <img src="{% static '/images/icon2.png' %}" alt="Star">
+                        <h1>{{ about_me.my_name }}</h1>
+                        <p>{{ about_me.about_me|safe }}</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row mt-24">
+                <div class="col-md-6" data-aos="zoom-in">
+                    <div class="about-edc-exp about-experience shadow-box">
+                        <img src="{% static '/images/bg1.png' %}" alt="BG" class="bg-img">
+                        <h3>EXPERIENCE</h3>
+
+                        <ul>
+                        {% for experience in experiences %}
+                            <li>
+                                <p class="date">{{ experience.start_year }} - {{ experience.end_year }}</p>
+                                <h2>{{ experience.position }}</h2>
+                                <p class="type">{{ experience.company }}</p>
+                            </li>
+                        {% endfor %} 
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="zoom-in">
+                    <div class="about-edc-exp about-education shadow-box">
+                        <img src="{% static '/images/bg1.png' %}" alt="BG" class="bg-img">
+                        <h3>EDUCATION</h3>
+
+                        <ul>
+                        {% for education in educations%}
+                            <li>
+                                <p class="date">{{ education.start_year }} - {{ education.end_year }}</p>
+                                <h2>{{ education.degree }}</h2>
+                                <p class="type">{{ education.university }}</p>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-24">
+                <div class="col-md-12">
+                    <div class="d-flex profile-contact-credentials-wrap gap-24">
+
+                        <div data-aos="zoom-in">
+                            <div class="about-profile-box info-box shadow-box h-full">
+                                <img src="{% static '/images/bg1.png' %}" alt="BG" class="bg-img">
+                                <div class="inner-profile-icons shadow-box">
+                                {% if social_media %}
+                                    {% for platform,link in social_media.items %}
+                                        <li><a href="{{ link }}"><i class="iconoir-{{ platform }}"></i></a></li>
+                                    {% endfor %}
+                                {% endif %}
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="infos">
+                                        <h4>Meni kuzatib boring</h4>
+                                        <h1>Profillar</h1>
+                                    </div>
+
+                                    <a href="{% url 'about' %}" class="about-btn">
+                                        <img src="{% static '/images/icon.svg' %}" alt="Button">
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div data-aos="zoom-in" class="flex-1">
+                            <div class="about-contact-box info-box shadow-box">
+                                <a class="overlay-link" href="{% url 'contact' %}"></a>
+                                <img src="{% static '/images/bg1.png' %}" alt="BG" class="bg-img">
+                                <img src="{% static '/images/icon2.png' %}" alt="Icon" class="star-icon">
+                                <h1>Keling <br>birga <span>ishlaymiz.</span></h1>
+                                <a href="{% url 'contact' %}" class="about-btn">
+                                    <img src="{% static '/images/icon.svg' %}" alt="Button">
+                                </a>
+                            </div>
+                        </div>
+
+                        <div data-aos="zoom-in" class="h-full">
+                            <div class="about-crenditials-box info-box shadow-box">
+                                <a class="overlay-link" href="{% url 'credentials' %}"></a>
+                                <img src="{% static '/images/bg1.png' %}" alt="BG" class="bg-img">
+                                <img src="{% static '/images/signn.png' %}" style="height: 140px;" alt="Sign">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="infos">
+                                        <h4>men haqimda ko'proq</h4>
+                                        <h1>Rezyume</h1>
+                                    </div>
+
+                                    <a href="credentials.html" class="about-btn">
+                                        <img src="{% static '/images/icon.svg' %}" alt="Button">
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

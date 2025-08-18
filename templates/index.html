@@ -1,0 +1,208 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    <title>Asosiy Sahifa</title>
+{% endblock %}
+
+{% block content %}
+ <!-- About -->
+        <section class="about-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6" data-aos="zoom-in">
+                        <div class="about-me-box shadow-box">
+                            <a class="overlay-link" href="{% url 'about' %}"></a>
+                            <img src="{% static '/images/bg1.png' %}" alt="BG" class="bg-img">
+                            <div class="img-box">
+                                <img src="{% static '/images/muhammadamin.png' %}" alt="About Me">
+                            </div>
+                            <div class="infos">
+                                <h4>Data Analyst & Backend developer</h4>
+                                <h1>Muhammadamin Ozadov.</h1>
+                                <p>Backend Developer | FastAPI & Django |   Data Analyst | T-SQL & Power BI |</p>
+                                <a href="#" class="about-btn">
+                                    <img src="{% static '/images/icon.svg' %}" alt="Button">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="about-credentials-wrap">
+                            <div data-aos="zoom-in">
+                                <div class="banner shadow-box">
+                                    <div class="marquee">
+                                        <div>
+                                          <span>Xizmatlarim : <b>BACKEND CODING </b> <img src="{% static '/images/star1.svg' %}" alt="Star">  <b>DATA INTEGRATSIYA QILISH</b> <img src="{% static '/images/star1.svg' %}" alt="Star"><b>DATA VIZUALIATION</b> <img src="{% static '/images/star1.svg' %}" alt="Star"><b>DASHBOART TAYORLASH</b> <img src="{% static '/images/star1.svg' %}" alt="Star"> <b>DATASET TAHLILI</b> <img src="{% static '/images/star1.svg' %}" alt="Star"><b> DATASET YIG'ISH</b> <img src="{% static '/images/star1.svg' %}" alt="Star"> Xizmatlarim :</span>
+                                        </div>
+                                      </div>
+                                </div>
+
+                            </div>
+
+                            <div class="gx-row d-flex gap-24">
+                                <div data-aos="zoom-in">
+                                    <div class="about-crenditials-box info-box shadow-box h-full">
+                                        <a class="overlay-link" href="{% url 'credentials' %}"></a>
+                                        <img src="{% static '/images/bg1.png' %}" alt="BG" class="bg-img">
+                                        <img src="{% static '/images/signn.png' %}" alt="Sign">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <div class="infos">
+                                                <h4>men haqimda ko'proq</h4>
+                                                <h1>Rezyume</h1>
+                                            </div>
+    
+                                            <a href="{% url 'credentials' %}" class="about-btn">
+                                                <img src="{% static '/images/icon.svg' %}" alt="Button">
+                                            </a>
+    
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div data-aos="zoom-in">
+                                    <div class="about-project-box info-box shadow-box h-full">
+                                        <a class="overlay-link" href="{% url 'works' %}"></a>
+                                        <img src="{% static '/images/bg1.png' %}" alt="BG" class="bg-img">
+                                        <img src="{% static '/images/bor1.png' %}" alt="My Works">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <div class="infos">
+                                                <h4>PROJECTS</h4>
+                                                <h1>Loyihalar</h1>
+                                            </div>
+    
+                                            <a href="#" class="about-btn">
+                                                <img src="{% static '/images/icon.svg' %}" alt="Button">
+                                            </a>
+    
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-24">
+                    <div class="col-md-12">
+                        <div class="blog-service-profile-wrap d-flex gap-24">
+                            <div data-aos="zoom-in">
+                                <div class="about-blog-box info-box shadow-box h-full">
+                                    <a href="{% url 'blog_list' %}" class="overlay-link"></a> 
+                                    
+                                    <img src="{% static '/images/bg1.png' %}" alt="BG" class="bg-img">
+                                    <img src="{% static '/images/gfonts.png' %}" alt="GFonts">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="infos">
+                                            <h4>Blog</h4>
+                                            <h1>Maqolalar</h1>
+                                        </div>
+    
+                                        <a href="{% url 'blog_list' %}" class="about-btn"> 
+                                        
+                                            <img src="{% static '/images/icon.svg' %}" alt="Button">
+                                        </a>
+    
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div data-aos="zoom-in" class="flex-1">
+                                <div class="about-services-box info-box shadow-box h-full">
+                                    <a href="{% url 'video' %}" class="overlay-link"></a>
+                                    <!-- {% comment %} {% url 'service' %} {% endcomment %} -->
+                                    <img src="{% static '/images/bg1.png' %}" alt="BG" class="bg-img">
+                                    <div class="icon-boxes">
+                                        {% for video in videos %}
+                                            <a><img src="{{ video.thumbnail.url }}" alt="Icon" ></a> 
+                                        {% endfor %}
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="infos">
+                                            <h4>videolar</h4>
+                                            <h1>Video Kontentlar</h1>
+                                        </div>
+    
+                                        <a href="{% url 'video' %}" class="about-btn">
+                                        <!-- {% comment %} {% url 'service' %} {% endcomment %} -->
+                                            <img src="{% static '/images/icon.svg' %}" alt="Button">
+                                        </a>
+    
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div data-aos="zoom-in">
+                                <div class="about-profile-box info-box shadow-box h-full">
+                                    <img src="{% static '/images/bg1.png' %}" alt="BG" class="bg-img">
+                                    <div class="inner-profile-icons shadow-box">
+                                    {% if about_me.get_two_social_media %}
+                                        {% for platform,link in about_me.get_two_social_media.items %}
+                                            <a href="{{ link }}"><i class="iconoir-{{ platform }}"></i></a>
+                                        {% endfor %}
+                                    {% endif %}
+                                        
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <a href="{% url 'contact' %}" >
+                                        <div class="infos">
+                                            <h4>Meni kuzatib boring</h4>
+                                            <h1>Profillar</h1>
+                                        </div>
+                                        </a>
+    
+                                        <a href="{% url 'contact' %}" class="about-btn">
+                                            <img src="{% static '/images/icon.svg' %}" alt="Button">
+                                        </a>
+    
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="row mt-24">
+                    <div class="col-md-6" data-aos="zoom-in">
+                            
+                        <div class="about-client-box info-box shadow-box">
+                            <img src="{% static '/images/bg1.png' %}" alt="BG" class="bg-img">
+                            <div class="clients d-flex align-items-start gap-24 justify-content-center">
+                                <div class="client-item">
+                                    <h1>+3</h1>
+                                    <p>Yillik <br>Tajriba</p>
+                                </div>
+
+                                <div class="client-item">
+                                    <h1>+15</h1>
+                                    <p>TURLI <br>MIJOZLAR</p>
+                                </div>
+
+                                <div class="client-item">
+                                    <h1>+35</h1>
+                                    <p>Umumiy <br>Loyihalar</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6" data-aos="zoom-in">
+                            
+                        <div class="about-contact-box info-box shadow-box">
+                            <a class="overlay-link" href="{% url 'contact' %}"></a>
+                            <img src="{% static '/images/bg1.png' %}" alt="BG" class="bg-img">
+                            <img src="{% static '/images/icon2.png' %}" alt="Icon" class="star-icon">
+                            <h1>Keling <br>birga <span>ishlaymiz.</span></h1>
+                            <a href="#" class="about-btn">
+                                <img src="{% static '/images/icon.svg' %}" alt="Button">
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock %}

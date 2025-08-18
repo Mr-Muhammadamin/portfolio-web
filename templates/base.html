@@ -1,0 +1,78 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from wpriverthemes.com/landing/gridx-html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 06 Nov 2024 18:11:01 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    {% block title %}
+        <title>Base</title>
+    {% endblock %}
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css">
+
+    <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static '/css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+</head>
+<body>
+
+    <main class="main-homepage">
+
+        {% if messages %}
+        <div>
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        </div>
+        {% include 'include/header.html' %}
+        {% block content %}{% endblock %}
+        {% include 'include/footer.html' %}
+        
+    </main>
+    
+
+    <script src="{% static '/js/jquery-3.6.4.js'%}"></script>
+    <script src="{% static '/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static '/js/aos.js' %}"></script>
+    <script src="{% static '/js/main.js' %}"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const menuItems = document.querySelectorAll('.menu li');
+
+        // Oldingi tanlangan "active" elementni localStorage dan olish
+        const activeIndex = localStorage.getItem('activeMenuIndex');
+        if (activeIndex !== null) {
+            menuItems[activeIndex].classList.add('active');
+        }
+
+        menuItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                menuItems.forEach(li => li.classList.remove('active'));
+
+                item.classList.add('active');
+
+                localStorage.setItem('activeMenuIndex', index);
+            });
+        });
+    });
+</script>
+
+
+</body>
+
+<!-- Mirrored from wpriverthemes.com/landing/gridx-html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 06 Nov 2024 18:11:38 GMT -->
+</html>

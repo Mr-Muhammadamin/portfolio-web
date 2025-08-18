@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    <title>Blog malumotlari</title>
+{% endblock %}
+
+{% block content %}
+ <!-- Breadcrumb -->
+        <section class="breadcrumb-area">
+            <div class="container">
+                <div class="breadcrumb-content" data-aos="fade-up">
+                    <a href="{% url 'index' %}"><span>HOME</span></a> <span>-</span> <a href="{% url 'blog_list' %}"><span>BLOG</span></a><span>- BLOG DETAILS</span>
+                    <h1 class="section-heading"><img src="{% static '/images/star-2.png' %}" alt="Star"> Blog tafsilotlari <img src="{% static '/images/star-2.png' %}" alt="Star"></h1>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Blog Details -->
+        <section class="blog-details-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="blog-details-content">
+                            <div class="img-box">
+                            {% if blog.image %}
+                                <img src="{{ blog.image.url }}" alt="Blog">
+                            {% else %}
+                                <img src="{% static '/images/blog1.jpg' %}" alt="Blog">
+                            {% endif %}
+                            </div>
+                            <span class="meta">{{ blog.created_at | date:"d F Y" }} </span>
+                            <h1>{{ blog.title }}</h1>
+                            <p>{{ blog.content|safe }}</p>
+
+    
+
+                            <div class="tags">
+                            {% for tag in blog.tag.all %}
+                                <a href="?tag={{ tag.slug }}" class="theme-btn">{{ tag.name }}</a>
+                            {% endfor %}  
+                            </div>
+
+                            <div class="comments-and-form-wrap">
+                                <div class="comments-and-form-wrap-inner shadow-box">
+                                    <h2>Fikrlar</h2>
+
+                                    <div class="comments">
+                                    {% for comment in blog.comments.all %}
+                                        <div class="comment-list">
+                                            <div class="comment-avatar">
+                                                <img src="{% static '/images/comments.png' %}" alt="Avatar">
+                                            </div>
+                                            <div class="comment-body">
+                                                <span class="date">{{ comment.created_at|date:"d F Y" }}</span>
+                                                <h3>{{ comment.name }}</h3>
+                                                <p>{{ comment.message|safe }}</p>
+                                                
+                                            </div>
+                                        </div>
+                                    {% empty %}
+                                        <p>Hozircha izohlar yo‘q. Birinchi bo'lib fikr bildiring</p>
+                                    {% endfor %}
+
+                                    </div>
+
+                                    <div class="comment-form">
+                                        <h2>Izoh qoldiring</h2>
+
+                                        <form method ="POST">
+                                        {% csrf_token %}
+                                            <div class="input-group">
+                                                <input type="text" name="name" placeholder="Ism*">
+                                            </div>
+                                            <div class="input-group">
+                                                <input type="text" name="email" placeholder="Email*">
+                                            </div>
+                                            <div class="input-group">
+                                                <textarea name="message" placeholder="Sizning xabaringiz*"></textarea>
+                                            </div>
+                                            <div class="input-group">
+                                                <button class="theme-btn" type="submit">Xabar yuborish</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="blog-sidebar">
+                            <div class="blog-sidebar-inner">
+
+                                <div class="blog-sidebar-widget search-widget">
+                                    <div class="blog-sidebar-widget search-widget">
+                                        <div class="blog-sidebar-widget-inner" data-aos="zoom-in">
+                                            <form action="{% url 'blog_search' %}" method="GET" class="shadow-box">
+                                                <input type="text" name="q" placeholder="Bu yerda qidiring..." required>
+                                                <button type="submit" class="theme-btn">Search</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="blog-sidebar-widget recent-post-widget" data-aos="zoom-in">
+                                    <div class="blog-sidebar-widget-inner shadow-box">
+                                        <h3>Oxirgi maqolalar</h3>
+
+                                        <ul>
+                                        {% for post in recent_posts %}
+                                            <li><a href="{% url 'blog_detail' slug=post.slug %}">{{ post.title }}</a></li>
+                                        {% endfor %}
+                                        </ul>
+
+                                    </div>
+                                </div>
+
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock %}

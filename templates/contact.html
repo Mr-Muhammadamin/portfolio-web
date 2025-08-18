@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    <title>Aloqa</title>
+{% endblock %}
+
+{% block content %}
+<!-- Contact -->
+        <section class="contact-area">
+            <div class="container">
+                <div class="gx-row d-flex justify-content-between gap-24">
+                    <div class="contact-infos">
+                        <h3 data-aos="fade-up">Aloqa ma'lumotlari</h3>
+                        <ul class="contact-details">
+                            <li class="d-flex align-items-center" data-aos="zoom-in">
+                                <div class="icon-box shadow-box">
+                                    <i class="iconoir-mail"></i>
+                                </div>
+                                <div class="right">
+                                    <span>Menga xat yuborish</span>
+                                    <h4>muhammadaminozadov@gmail.com</h4>
+                                </div>
+                            </li>
+
+                            <li class="d-flex align-items-center" data-aos="zoom-in">
+                                <div class="icon-box shadow-box">
+                                    <i class="iconoir-phone"></i>
+                                </div>
+                                <div class="right">
+                                    <span>Qo'ng'iroq qilish</span>
+                                    <h4>+998(99) 774-48-32</h4>
+                                    <!-- <h4>+1 504-749-5456</h4> -->
+                                </div>
+                            </li>
+
+                            <li class="d-flex align-items-center" data-aos="zoom-in">
+                                <div class="icon-box shadow-box">
+                                    <i class="iconoir-pin-alt"></i>
+                                </div>
+                                <div class="right">
+                                    <span>Joylashuv</span>
+                                    <h4>Antartica</h4>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <h3 data-aos="fade-up">Ijtimoiy tarmoqlar</h3>
+                        <ul class="social-links d-flex align-center" data-aos="zoom-in">
+                            {% if social_media %}
+                                {% for platform,link in social_media %}
+                                    <li>
+                                    <a class="shadow-box" href="{{ link }}"><i class="iconoir-{{ platform }}"></i></a>
+                                    </li>
+                                {% endfor %}
+                            {% endif %}
+                        </ul>
+                    </div>
+
+                    <div data-aos="zoom-in" class="contact-form">
+                        <div class="shadow-box">
+                            <img src="{% static '/images/bg1.png' %}" alt="BG" class="bg-img">
+                            <img src="{% static '/images/icon3.png' %}" alt="Icon">
+                            <h1>Keling birga <span>ishlaymiz.</span></h1>
+                            <form method="POST" action="{% url 'contact' %}">
+                            {% csrf_token  %}
+                                <div class="alert alert-success messenger-box-contact__msg" style="display: none" role="alert">
+                                    Xabaringiz muvaffaqiyatli yuborildi.
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" name="full_name" id="full-name" placeholder="Ismingiz *">
+                                </div>
+                                <div class="input-group">
+                                    <input type="email" name="email" id="email" placeholder="Email *">
+                                </div>
+                                <div class="input-group">
+                                    <textarea name="message" id="message" placeholder="Xabaringiz.Xabarda istalgan ijtimoiy tarmoqingiz uchun havola qoldirsangiz,u orqali javob qaytarishim mumkin.Aks holda email da javob qaytaraman *"></textarea>
+                                </div>
+                                <div class="input-group">
+                                    <button class="theme-btn submit-btn" name="submit" type="submit">Xabar yuborish</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+{% endblock %}
